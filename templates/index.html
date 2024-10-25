@@ -1,0 +1,9 @@
+{%extends "layout.html"%}
+{%block content%}
+    <div>
+        #{% for datas in data %}
+        #<span>{{datas['week']}}</span>
+        #{% endfor %}
+        #<p>{{data['text']}}</p>
+    </div>
+{%endblock%}
