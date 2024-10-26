@@ -5,7 +5,7 @@ export default [
         id: '1',
         title:'Welcome to Survivor League!',
         description: 'Join a league and see if you can survive the season',
-        image: require('../assets/images/welcomeSSL.jpg'),
+        image: require('../assets/images/Untitled (1).png'),
     },
     
     {
