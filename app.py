@@ -37,9 +37,6 @@ def index():
         # Parse the JSON data from the response
         data = response.json()
         
-        # Print the entire data structure for debugging
-        print(json.dumps(data, indent=2))
-        
         # Extract team names
         team_names = Team.extract_team_names(data)
         
@@ -47,9 +44,9 @@ def index():
         teams = [Team(name=team_name, week=8) for team_name in team_names]
         
         # Check win/loss for each team
-        results = {team.name: team.winorloss(data) for team in teams}
+        result = Team(name='Los Angeles Rams', week=8).winorloss(data, 8)
         
-        return jsonify(results)
+        return jsonify(result)
     
     except requests.exceptions.HTTPError as http_err:
         return jsonify({
