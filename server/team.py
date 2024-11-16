@@ -1,44 +1,47 @@
-import requests
-import os
-
-SPORTRADAR_API_KEY = os.getenv('SPORTRADAR_API_KEY', 'M31MHThjj9azPcbv3OTqSs3mSTWTKSz8VMthJGrZ')
+from team_controller import *
 
 class Team:
-    def __init__(self, name, week):
+    def __init__(self, name):
         self.name = name
-        self.week = week
+        self.wins = 0
+        self.losses = 0
 
     def __repr__(self):
-        return f"Team(name={self.name}, week={self.week})"
+        return f"Team(name={self.name})"
     
+    
+    # Load environment variables (ensure you've set SPORTRADAR_API_KEY)
+    SPORTRADAR_API_KEY = os.getenv('SPORTRADAR_API_KEY', 'M31MHThjj9azPcbv3OTqSs3mSTWTKSz8VMthJGrZ')
+
     #returns the teams playing for a certain week
-    def extract_team_names(obj, team_names=None):
+    def teams_playing(week, team_names=None):
+        data = get_current_week(week)
+
         if team_names is None:
             team_names = []
         
-        if isinstance(obj, dict):
-            # Check if the current dictionary contains 'home' or 'away'
-            if 'home' in obj and 'name' in obj['home']:
-                team_names.append(obj['home']['name'])
-            if 'away' in obj and 'name' in obj['away']:
-                team_names.append(obj['away']['name'])
-            
-            # Recur for other items in the dictionary
-            for key, value in obj.items():
-                Team.extract_team_names(value, team_names)
-                
-        elif isinstance(obj, list):
-            for item in obj:
-                Team.extract_team_names(item, team_names)
+        week = data.get('week', {})
+
+        games = week.get('games', {})
+
+        for game in games:
+            home_team = game.get('home').get('name')
+            away_team = game.get('away').get('name')
+
+            if home_team not in team_names:
+                team_names.append(home_team)
+            if away_team not in team_names:
+                team_names.append(away_team)
         
         return team_names
 
-
     #returns whether team won or lost in a certain week
-    def winorloss(self, data, week):
-        print(f"Finding win/loss for team: {self.name}")
-        aliases = self.extract_team_names(data)
-        #print(f"Extracted aliases: {aliases}")
+    def win_or_loss(team, week):
+        # Parse the JSON data from the response
+        data = get_current_week(week)
+
+        print(f"Finding win/loss for team: {team.name}")
+
         week = data.get('week', {})
         for game in week.get('games', {}):
             home_team = game.get('home', {}).get('name')
@@ -46,16 +49,30 @@ class Team:
             home_points = game.get('scoring', {}).get('home_points')
             away_points = game.get('scoring', {}).get('away_points')
             
-            if home_team == self.name:
+            if home_team == team.name:
                 if home_points > away_points:
-                    return 'win'
+                    return True
                 else:
-                    return 'loss'
-            elif away_team == self.name:
+                    return False
+            elif away_team == team.name:
                 if away_points > home_points:
-                    return 'win'
+                    return True
                 else:
-                    return 'loss'
+                    return False
             print(f"{home_team}  vs  {away_team}")
+        
+        return 'no game found'
+
+    def team_record(self, data, week):
+        data = get_season_data()
+
+        print(f"Finding win/loss for team: {self.name}")
+        
+        conference = data.get('conferences', {})
+
+        for division in conference.get('divisions', {}):
+            for team in division.get('teams', {}):
+                if team.get('name') == self.name:
+                    return team.get('wins'), team.get('losses')
         
         return 'no game found'
