@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',  // Align all content at the bottom
     alignItems: 'center',
-    backgroundColor: '#040d03', //dark green color
+    backgroundColor: '#FFFFFF',
     paddingBottom: height * 0.06,
   },
   signupButton: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     paddingVertical: height * 0.0175,
     paddingHorizontal: width * 0.05,
     borderRadius: 25,
-    backgroundColor: '#E63946',
+    backgroundColor: '#800000',
     alignItems: 'center',
     marginBottom: height * 0.02,
   },
@@ -54,20 +54,20 @@ const styles = StyleSheet.create({
     paddingVertical: height * 0.005,
     paddingHorizontal: width * 0.05,
     borderRadius: 25,
-    backgroundColor: '#040d03', //same color as container background
+    backgroundColor: '#FFFFFF', 
     alignItems: 'center',
   },
   loginText: {
     fontSize: width * 0.035,  
     fontWeight: 'bold',
-    color: '#d0d1c7', //maroon color
+    color: '#1A2A44', 
     textAlign: 'center',
     fontFamily: 'sans-serif',
   },
   signupText: {
     fontSize: width * 0.045,
     fontWeight: 'bold',
-    color: '#d0d1c7', //yellow color
+    color: '#1A2A44', 
     textAlign: 'center',
     fontFamily: 'sans-serif',
   },

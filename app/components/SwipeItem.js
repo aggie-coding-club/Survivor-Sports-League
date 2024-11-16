@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         fontSize: width * .06,
         marginBottom: 10,
-        color: '#BD9302',
+        color: '#800000',
         textAlign: 'center',
         fontFamily: 'sans-serif',
     },
 
     description: {
         fontWeight: '300',
-        color: '#d0d1c7',
+        color: '#1A2A44',
         textAlign: 'center',
         paddingHorizontal: 50,
         fontFamily: 'sans-serif',
