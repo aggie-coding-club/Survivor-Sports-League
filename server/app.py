@@ -9,6 +9,27 @@ app = Flask(__name__)
 # Load environment variables (ensure you've set SPORTRADAR_API_KEY)
 SPORTRADAR_API_KEY = os.getenv('SPORTRADAR_API_KEY', 'M31MHThjj9azPcbv3OTqSs3mSTWTKSz8VMthJGrZ')
 
+def extract_team_names(obj, team_names=None): #weekly matchups
+    if team_names is None:
+        team_names = []
+    
+    if isinstance(obj, dict):
+        # Check if the current dictionary contains 'home' or 'away'
+        if 'home' in obj and 'name' in obj['home']:
+            team_names.append(obj['home']['name'])
+        if 'away' in obj and 'name' in obj['away']:
+            team_names.append(obj['away']['name'])
+        
+        # Recur for other items in the dictionary
+        for key, value in obj.items():
+            extract_team_names(value, team_names)
+            
+    elif isinstance(obj, list):
+        for item in obj:
+            extract_team_names(item, team_names)
+    
+    return team_names
+
 @app.route('/')
 def index():
     # Define the API endpoint
