@@ -50,11 +50,13 @@ class Team:
             away_points = game.get('scoring', {}).get('away_points')
             
             if home_team == self.name:
+
                 if home_points > away_points:
                     return True
                 else:
                     return False
             elif away_team == self.name:
+
                 if away_points > home_points:
                     return True
                 else:

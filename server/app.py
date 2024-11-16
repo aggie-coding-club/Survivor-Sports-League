@@ -10,8 +10,6 @@ app = Flask(__name__)
 # Load environment variables (ensure you've set SPORTRADAR_API_KEY)
 SPORTRADAR_API_KEY = os.getenv('SPORTRADAR_API_KEY', 'M31MHThjj9azPcbv3OTqSs3mSTWTKSz8VMthJGrZ')
 
-
-
 @app.route('/')
 def index():
     # Define the API endpoint
