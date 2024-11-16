@@ -36,11 +36,11 @@ class Team:
         return team_names
 
     #returns whether team won or lost in a certain week
-    def win_or_loss(team, week):
+    def win_or_loss(self, week):
         # Parse the JSON data from the response
         data = get_current_week(week)
 
-        print(f"Finding win/loss for team: {team.name}")
+        print(f"Finding win/loss for team: {self.name}")
 
         week = data.get('week', {})
         for game in week.get('games', {}):
@@ -49,12 +49,14 @@ class Team:
             home_points = game.get('scoring', {}).get('home_points')
             away_points = game.get('scoring', {}).get('away_points')
             
-            if home_team == team.name:
+            if home_team == self.name:
+
                 if home_points > away_points:
                     return True
                 else:
                     return False
-            elif away_team == team.name:
+            elif away_team == self.name:
+
                 if away_points > home_points:
                     return True
                 else:
