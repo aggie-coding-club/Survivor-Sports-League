@@ -1,4 +1,4 @@
-from server.team_controller import *
+from team_controller import *
 
 class Team:
     def __init__(self, name):
