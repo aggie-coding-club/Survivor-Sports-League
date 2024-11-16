@@ -25,7 +25,7 @@ def index():
     }
 
     try:
-        # Make the GET request to the Sportradar API
+        # Make the GET request for schedule to the Sportradar API
         response = requests.get(url, headers=headers, params=params)
         
         # Raise an exception for HTTP errors
@@ -35,17 +35,18 @@ def index():
         data = response.json()
         
         # Extract aliases
-        aliases = Team.extract_team_names(data)
+        week = "08"
+        aliases = Team.teams_playing(week)
         
-        print(Team("Los Angeles Rams", 8).winorloss(data, 8))
+        print(Team("Los Angeles Rams").win_or_loss(week))
 
         # Return the aliases as a JSON response
 
         # Extract team names
-        team_names = Team.extract_team_names(data)
-        
+        team_names = Team.teams_playing(week)
+
         # Example usage of the Team class
-        teams = [Team(name=team_name, week=8) for team_name in team_names]
+        teams = [Team(name=team_name) for team_name in team_names]
         
         return jsonify([team.__repr__() for team in teams])
     
