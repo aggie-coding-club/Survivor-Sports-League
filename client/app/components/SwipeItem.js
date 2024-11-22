@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        paddingBottom: height * .06,
     },
 
     image: {
@@ -35,14 +36,19 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         fontSize: width * .06,
         marginBottom: 10,
-        color: '#BD9302',
+        color: '#ffffff',
         textAlign: 'center',
         fontFamily: 'sans-serif',
+        shadowColor: '#500000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.8,
+        shadowRadius: 3,
+        elevation: 10,
     },
 
     description: {
         fontWeight: '300',
-        color: '#d0d1c7',
+        color: '#ffffff',
         textAlign: 'center',
         paddingHorizontal: 50,
         fontFamily: 'sans-serif',
