@@ -37,16 +37,18 @@ const LeagueCreationScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Enter League Name"
+        placeholderTextColor="#500000"
+        textAlign='center'
         value={leagueName}
         onChangeText={setLeagueName}
       />
       <View style={styles.leagueSizeContainer}>
         <TouchableOpacity onPress={decreaseLeagueSize} style={styles.arrowButton}>
-          <FontAwesome name="arrow-left" size={24} color="black" />
+          <FontAwesome name="arrow-left" size={24} color="#A24857" />
         </TouchableOpacity>
         <Text style={styles.leagueSizeText}>Enter League Size: {leagueSize}</Text>
         <TouchableOpacity onPress={increaseLeagueSize} style={styles.arrowButton}>
-          <FontAwesome name="arrow-right" size={24} color="black" />
+          <FontAwesome name="arrow-right" size={24} color="#A24857" />
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.createButton} onPress={handleCreateLeague}>
@@ -62,19 +64,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: '#263650',
   },
   title: {
-    fontSize: 24,
+    color: '#ffffff',
+    fontSize: 40,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 30,
+    shadowColor: '#500000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 10,
   },
   input: {
-    width: '80%',
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 20,
-    borderRadius: 5,
+    width: '85%',
+    color: '#000000',
+    backgroundColor: '#ffffff',
+    padding: 20,
+    borderRadius: 15,
+    shadowColor: '#500000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 20,
+    elevation: 10,
+    marginBottom:50,
   },
   leagueSizeContainer: {
     flexDirection: 'row',
@@ -83,20 +97,35 @@ const styles = StyleSheet.create({
   },
   arrowButton: {
     padding: 10,
+    shadowColor: '#A24857',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 10,
   },
   leagueSizeText: {
     fontSize: 18,
     marginHorizontal: 10,
+    color: '#ffffff',
   },
   createButton: {
-    backgroundColor: '#28a745',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 5,
+    backgroundColor: '#500000',
+    marginTop: 20,
+    paddingHorizontal: 70,
+    padding: 20,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#A24857',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 10,
   },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
+    fontSize: 20,
   },
 });
 

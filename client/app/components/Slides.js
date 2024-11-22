@@ -5,7 +5,7 @@ export default [
         id: '1',
         title:'Welcome to Survivor League!',
         description: 'Join a league and see if you can survive the season',
-        image: require('../assets/images/Untitled (1).png'),
+        image: require('../assets/images/welcome1.png'),
     },
     
     {
@@ -13,7 +13,7 @@ export default [
         id: '2',
         title:'Pick Your Team',
         description: 'Each week, choose a team from the list. If your team wins, you score points!',
-        image: require('../assets/images/image1SSL.jpg'),
+        image: require('../assets/images/selection.jpg'),
     },
 
     {   
@@ -21,7 +21,7 @@ export default [
         id: '3',
         title:'Watch Your Team Win',
         description: 'Track your score as you compete against others in the league',
-        image: require('../assets/images/image2SSL.jpg'),  
+        image: require('../assets/images/image2.jpg'),  
     },
 
     {
@@ -29,7 +29,7 @@ export default [
         id: '4',
         title:'Strategize',
         description: 'Think ahead and plan your next pick carefully!',
-        image: require('../assets/images/image3SSL.jpg'),
+        image: require('../assets/images/image1.png'),
     },
 
     {
@@ -37,6 +37,6 @@ export default [
         id: '5',
         title:'Compete!',
         description: 'Can you overtake your opponents and win your Survivor League?',
-        image: require('../assets/images/image4SSL.jpg'),
+        image: require('../assets/images/image4.jpeg'),
     },
 ];

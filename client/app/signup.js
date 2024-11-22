@@ -24,14 +24,14 @@ const SignUpScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Enter Username"
-        placeholderTextColor="#888"  // Adjust color for better visibility
+        placeholderTextColor="#500000"  // Adjust color for better visibility
         value={userName}
         onChangeText={setUserName}
       />
       <TextInput
         style={styles.input}
         placeholder="Enter Password"
-        placeholderTextColor="#888"  // Adjust color for better visibility
+        placeholderTextColor="#500000"  // Adjust color for better visibility
         value={password}
         onChangeText={setPassword}
         secureTextEntry
@@ -45,31 +45,48 @@ const SignUpScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#263650', 
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
   title: {
-    fontSize: 24,
+    color: '#ffffff',
+    fontSize: 40,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 30,
+    shadowColor: '#500000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 10,
   },
   input: {
-    width: '80%',
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 20,
-    borderRadius: 5,
+    width: '85%',
+    backgroundColor: '#ffffff',
+    padding: 20,
+    borderRadius: 15,
+    shadowColor: '#500000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 20,
+    elevation: 10,
+    marginBottom:50,
   },
   arrowButton: {
     marginTop: 20,
-    backgroundColor: '#007bff',
-    padding: 15,
+    paddingHorizontal: 70,
+    backgroundColor: '#500000',
+    padding: 20,
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#A24857',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 10,
   },
 });
 
