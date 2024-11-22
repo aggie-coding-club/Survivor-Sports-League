@@ -3,32 +3,12 @@ import requests
 import os
 import json
 from team import Team
+from user import User
 
 app = Flask(__name__)
 
 # Load environment variables (ensure you've set SPORTRADAR_API_KEY)
 SPORTRADAR_API_KEY = os.getenv('SPORTRADAR_API_KEY', 'M31MHThjj9azPcbv3OTqSs3mSTWTKSz8VMthJGrZ')
-
-def extract_team_names(obj, team_names=None): #weekly matchups
-    if team_names is None:
-        team_names = []
-    
-    if isinstance(obj, dict):
-        # Check if the current dictionary contains 'home' or 'away'
-        if 'home' in obj and 'name' in obj['home']:
-            team_names.append(obj['home']['name'])
-        if 'away' in obj and 'name' in obj['away']:
-            team_names.append(obj['away']['name'])
-        
-        # Recur for other items in the dictionary
-        for key, value in obj.items():
-            extract_team_names(value, team_names)
-            
-    elif isinstance(obj, list):
-        for item in obj:
-            extract_team_names(item, team_names)
-    
-    return team_names
 
 @app.route('/')
 def index():
@@ -46,7 +26,7 @@ def index():
     }
 
     try:
-        # Make the GET request to the Sportradar API
+        # Make the GET request for schedule to the Sportradar API
         response = requests.get(url, headers=headers, params=params)
         
         # Raise an exception for HTTP errors
@@ -56,18 +36,31 @@ def index():
         data = response.json()
         
         # Extract aliases
-        aliases = Team.extract_team_names(data)
+        week = "08"
+        aliases = Team.teams_playing(week)
         
-        print(Team("Los Angeles Rams", 8).winorloss(data, 8))
+        print(Team("Los Angeles Rams").win_or_loss(week))
 
         # Return the aliases as a JSON response
 
         # Extract team names
-        team_names = Team.extract_team_names(data)
-        
+        team_names = Team.teams_playing(week)
+
         # Example usage of the Team class
-        teams = [Team(name=team_name, week=8) for team_name in team_names]
-        
+        teams = [Team(name=team_name) for team_name in team_names]
+
+        # test = User("test")
+
+        # test.initialize_team_names()
+
+        # print(test.teams)
+
+        # test.chosen = Team("Green Bay Packers")
+
+        # test.check_win_loss("02")
+
+        # print(test.teams)
+
         return jsonify([team.__repr__() for team in teams])
     
         # return jsonify({"aliases": aliases})
