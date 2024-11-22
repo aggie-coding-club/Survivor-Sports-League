@@ -41,7 +41,7 @@ class User:
         self.teams = self.get_team_names()
 
     def check_win_loss(self, week):
-        result = self.chosen.win_or_loss(week);
+        result = self.chosen.win_or_loss(week)
         if(result):
             self.teams.remove(self.chosen.name)
         

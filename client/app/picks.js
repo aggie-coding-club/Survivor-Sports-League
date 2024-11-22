@@ -1,6 +1,6 @@
-// Picks.js
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Button, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import { useRouter } from 'expo-router';
 
 const weeks = Array.from({ length: 18 }, (_, i) => `Week ${i + 1}`);
 
@@ -68,22 +68,20 @@ const matchups = [
     // Add more matchups here
   ];
 
-const Picks = () => {
-  const [selectedWeek, setSelectedWeek] = useState(weeks[0]);
-  const [selectedTeam, setSelectedTeam] = useState(null);
+const PicksScreen = () => {
+  const [week, setWeek] = useState(1);
+  const router = useRouter();
 
-  const handleTeamSelection = (team) => {
-    if (!selectedTeam || !team.hasPlayed) {
-      setSelectedTeam(team);
-    }
+  const handleNavigateToStandings = () => {
+    router.push('/standings');
   };
 
   return (
     <View style={styles.container}>
       <ScrollView horizontal style={styles.weeksContainer}>
-        {weeks.map((week) => (
-          <TouchableOpacity key={week} onPress={() => setSelectedWeek(week)}>
-            <Text style={[styles.week, selectedWeek === week && styles.selectedWeek]}>{week}</Text>
+        {weeks.map((week, index) => (
+          <TouchableOpacity key={index} onPress={() => setWeek(index + 1)}>
+            <Text style={[styles.week, week === `Week ${index + 1}` && styles.selectedWeek]}>{week}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -114,6 +112,10 @@ const Picks = () => {
           </View>
         ))}
       </ScrollView>
+      {/* Button to navigate to standings */}
+      <TouchableOpacity style={styles.standingsButton} onPress={handleNavigateToStandings}>
+        <Text style={styles.buttonText}>Go to Standings</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -254,6 +256,18 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 10,
   },
+  standingsButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    borderRadius: 5,
+    alignSelf: 'center',
+    marginTop: 20,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
 });
 
-export default Picks;
+export default PicksScreen;

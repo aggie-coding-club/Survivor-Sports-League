@@ -62,6 +62,7 @@ const Standings = () => {
     const mockData = generateMockData();
     setData(mockData);
   }, []);
+  
 
   const renderWeekSection = ({ week, players }) => (
     <View key={week} style={styles.weekSection}>
