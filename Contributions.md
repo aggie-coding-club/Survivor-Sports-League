@@ -5,17 +5,11 @@ Please follow the subsequent steps before creating a pull request.
 
 ## How to Create a Pull Request for Changes Made to this File
 
-1. Create a new branch from the main repository before making your changes. You can name the branch something like `contribution/your-name`.
+1. Add your contribution details to this file under the appropriate section.
 
-2. Add your contribution details to this file under the appropriate section.
+2. Commit your changes.
 
-3. Commit your changes.
-
-4. On GitHub, click the dropdown 'main' button.
-
-5. Select the branch you created.
-
-6. Create a pull request and give it an appropriate title like "Recorded Previous Contribution for Picks Screen".
+3. Create a pull request and give it an appropriate title like "Recorded Previous Contribution for Picks Screen".
 
 4. Once the pull request is approved, your contributions will be recorded here.
 
