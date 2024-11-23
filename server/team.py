@@ -40,8 +40,6 @@ class Team:
         # Parse the JSON data from the response
         data = get_current_week(week)
 
-        print(f"Finding win/loss for team: {self.name}")
-
         week = data.get('week', {})
         for game in week.get('games', {}):
             home_team = game.get('home', {}).get('name')
@@ -61,7 +59,6 @@ class Team:
                     return True
                 else:
                     return False
-            print(f"{home_team}  vs  {away_team}")
         
         return 'no game found'
 
