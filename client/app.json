@@ -8,6 +8,9 @@
       "expo-router"
     ],
     "name": "ssl-app",
-    "slug": "ssl-app"
+    "slug": "ssl-app",
+    "extra": {
+      "reactNativeNewArchitectureEnabled": true
+    }
   }
 }
