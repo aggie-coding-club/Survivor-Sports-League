@@ -22,5 +22,7 @@ Copy the format entry below. Paste it above the three dashed lines and change it
 - **Date**: [YYYY-MM-DD]
   - **Contribution Description**: [Describe your contribution briefly]
 
-
+### [Osvaldo Ledezma]
+- **Date**: [2024-11-16]
+  - **Contribution Description**: Worked on the picks screen, which shows team matchups, scores, and dates.
 ---
