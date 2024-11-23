@@ -4,6 +4,7 @@ import os
 import json
 from team import Team
 from user import User
+from cpu import CPU
 
 app = Flask(__name__)
 
@@ -63,7 +64,19 @@ def index():
 
         # print(test.teams)
 
-        return jsonify([team.__repr__() for team in teams])
+        # test = CPU("test")
+
+        # test.initialize_team_names()
+
+        # print(test.teams)
+
+        # test.chosen = Team(test.choose_random_team())
+
+        # test.check_win_loss("02")
+
+        # print(test.teams)
+
+        # return jsonify([team.__repr__() for team in teams])
     
         # return jsonify({"aliases": aliases})
     
