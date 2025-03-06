@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "name": "ssl-app",
+    "slug": "ssl-app",
+    "extra": {
+      "reactNativeNewArchitectureEnabled": true
+    }
+  }
+}
